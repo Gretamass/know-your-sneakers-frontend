@@ -28,8 +28,8 @@ export default {
   align-items: center;
   justify-content: space-between;
   max-width: 1550px;
+  margin: 5px 15px;
   width: 100%;
-  margin-top: 5px;
   .logo-container {
     width: 150px;
     margin-right: 100px;

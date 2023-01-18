@@ -28,7 +28,7 @@ body,
 html {
   height: 100vh;
   width: 100%;
-  background-image: url("@/assets/wave-haikei_3.svg");
+  background-image: url("@/assets/wave-haikei.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
