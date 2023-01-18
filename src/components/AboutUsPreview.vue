@@ -73,6 +73,7 @@ export default {
   width: 100%;
   @include flex-center-column;
   align-items: center;
+  margin-bottom: 100px;
 
   .about-us-holder {
     max-width: 100vw;

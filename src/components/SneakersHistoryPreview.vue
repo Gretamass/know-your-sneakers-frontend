@@ -58,6 +58,7 @@ export default {
   @include flex-center-column;
   align-items: center;
   max-width: 1550px;
+  margin-bottom: 100px;
 
   .sneaker-brands-container {
     max-width: 1550px;

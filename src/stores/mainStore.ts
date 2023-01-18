@@ -1,25 +1,5 @@
 import { defineStore } from "pinia";
 
-// You can name the return value of `defineStore()` anything you want,
-// but it's best to use the name of the store and surround it with `use`
-// and `Store` (e.g. `useUserStore`, `useCartStore`, `useProductStore`)
-// the first argument is a unique id of the store across your application
-export const useAlertsStore = defineStore("alerts", {
-  // other options...
-});
-
-export const useMainStore = defineStore("counter", {
-  state: () => ({ count: 0, name: "Eduardo" }),
-  getters: {
-    doubleCount: (state) => state.count * 2,
-  },
-  actions: {
-    increment() {
-      this.count++;
-    },
-  },
-});
-
 export const useArticlesStore = defineStore("articleId", {
   // arrow function recommended for full type inference
   state: () => {
@@ -113,6 +93,199 @@ export const useSneakersStore = defineStore("sneakerId", {
         },
       ],
       sneakers: [],
+      availableSneakersPreview: [
+        {
+          id: 1,
+          name: "Air Jordan 1",
+          model: "Air Jordan 1",
+          brand: "Nike",
+          mainImageUrl: "img.png",
+          price: 125,
+          imageAlt: "",
+          availability: [
+            {
+              id: 1,
+              name: "Kixart",
+              hasInStock: true,
+              price: 125,
+              mainImageUrl: "img.png",
+              imageALt: "",
+              goTo: "",
+            },
+            {
+              id: 2,
+              name: "Sizeer",
+              hasInStock: false,
+              price: null,
+              mainImageUrl: "img_1.png",
+              imageALt: "",
+              goTo: "",
+            },
+            {
+              id: 3,
+              name: "BALLZY",
+              hasInStock: true,
+              price: 127,
+              mainImageUrl: "img_2.png",
+              imageALt: "",
+              goTo: "",
+            },
+            {
+              id: 4,
+              name: "SNKRS",
+              hasInStock: true,
+              price: 139,
+              mainImageUrl: "img_3.png",
+              imageALt: "",
+              goTo: "",
+            },
+          ],
+          goTo: "",
+        },
+        {
+          id: 2,
+          name: "Adidas Yeezy Boost",
+          model: "Adidas Yeezy Boost",
+          brand: "Adidas",
+          mainImageUrl: "img_1.png",
+          price: 125,
+          imageAlt: "",
+          availability: [
+            {
+              id: 1,
+              name: "Kixart",
+              hasInStock: true,
+              price: 125,
+              mainImageUrl: "img.png",
+              imageALt: "",
+              goTo: "",
+            },
+            {
+              id: 2,
+              name: "Sizeer",
+              hasInStock: false,
+              price: null,
+              mainImageUrl: "img_1.png",
+              imageALt: "",
+              goTo: "",
+            },
+            {
+              id: 3,
+              name: "BALLZY",
+              hasInStock: false,
+              price: null,
+              mainImageUrl: "img_2.png",
+              imageALt: "",
+              goTo: "",
+            },
+            {
+              id: 4,
+              name: "SNKRS",
+              hasInStock: true,
+              price: 139,
+              mainImageUrl: "img_3.png",
+              imageALt: "",
+              goTo: "",
+            },
+          ],
+          goTo: "",
+        },
+        {
+          id: 3,
+          name: "Air Force 1",
+          model: "Air Force 1",
+          brand: "Nike",
+          mainImageUrl: "img_2.png",
+          price: 125,
+          imageAlt: "",
+          availability: [
+            {
+              id: 1,
+              name: "Kixart",
+              hasInStock: false,
+              price: null,
+              mainImageUrl: "img.png",
+              imageALt: "",
+              goTo: "",
+            },
+            {
+              id: 2,
+              name: "Sizeer",
+              hasInStock: true,
+              price: 127,
+              mainImageUrl: "img_1.png",
+              imageALt: "",
+              goTo: "",
+            },
+            {
+              id: 3,
+              name: "BALLZY",
+              hasInStock: false,
+              price: null,
+              mainImageUrl: "img_2.png",
+              imageALt: "",
+              goTo: "",
+            },
+            {
+              id: 4,
+              name: "SNKRS",
+              hasInStock: true,
+              price: 139,
+              mainImageUrl: "img_3.png",
+              imageALt: "",
+              goTo: "",
+            },
+          ],
+          goTo: "",
+        },
+      ],
+    };
+  },
+});
+
+export const useShopStore = defineStore("shopId", {
+  // arrow function recommended for full type inference
+  state: () => {
+    return {
+      shopsPreview: [
+        {
+          id: 1,
+          name: "Kixart",
+          hasInStock: true,
+          price: 125,
+          mainImageUrl: "img.png",
+          imageALt: "",
+          goTo: "",
+        },
+        {
+          id: 2,
+          name: "Sizeer",
+          hasInStock: false,
+          price: null,
+          mainImageUrl: "img_1.png",
+          imageALt: "",
+          goTo: "",
+        },
+        {
+          id: 3,
+          name: "BALLZY",
+          hasInStock: true,
+          price: 127,
+          mainImageUrl: "img_2.png",
+          imageALt: "",
+          goTo: "",
+        },
+        {
+          id: 4,
+          name: "SNKRS",
+          hasInStock: true,
+          price: 139,
+          mainImageUrl: "img_3.png",
+          imageALt: "",
+          goTo: "",
+        },
+      ],
+      shops: [],
     };
   },
 });
@@ -130,37 +303,3 @@ export const useStore = defineStore("storeId", {
     };
   },
 });
-
-interface State {
-  userList: UserInfo[];
-  user: UserInfo | null;
-}
-
-// export const useUserStore = defineStore("user", {
-//   state: (): State => {
-//     return {
-//       userList: [],
-//       user: null,
-//     };
-//   },
-// });
-
-interface UserInfo {
-  name: string;
-  age: number;
-}
-
-interface State {
-  count: number;
-}
-
-// export const store = defineStore("myStore", {
-//   state: (): State => ({
-//     count: 0,
-//   }),
-//   mutations: {
-//     increment(state) {
-//       state.count++;
-//     },
-//   },
-// });
