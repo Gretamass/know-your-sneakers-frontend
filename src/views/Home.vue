@@ -3,6 +3,7 @@
   <Hero></Hero>
   <ArticlesPreview></ArticlesPreview>
   <SneakersHistoryPreview></SneakersHistoryPreview>
+  <about-us-preview></about-us-preview>
 </template>
 
 <script>
@@ -11,10 +12,12 @@ import ArticlesPreview from "@/components/ArticlesPreview.vue";
 import SneakersHistoryPreview from "@/components/SneakersHistoryPreview.vue";
 
 import { useMainStore } from "@/stores/mainStore";
+import AboutUsPreview from "@/components/AboutUsPreview.vue";
 
 export default {
   name: "Home-item",
   components: {
+    AboutUsPreview,
     SneakersHistoryPreview,
     ArticlesPreview,
     Hero,
