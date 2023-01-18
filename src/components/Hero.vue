@@ -11,7 +11,7 @@
       <img src="../assets/juicy-boy-analyzes-graphs-and-diagrams.gif" />
     </div>
   </div>
-  <div class="pill-illustrations">
+  <div class="illustrations">
     <div class="grey circle"></div>
     <div class="yellow pill"></div>
     <div class="grey pill"></div>
@@ -57,16 +57,17 @@ export default {
   }
 }
 
-.pill-illustrations {
+.illustrations {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   position: relative;
-  width: 100%;
+  width: 100vw;
   margin-top: 50px;
+  margin-bottom: 100px;
 
-  .circle {
+  .grey.circle {
     @include circle;
     margin-left: 100px;
     position: absolute;

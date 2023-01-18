@@ -10,15 +10,50 @@
 @mixin circle {
   height: 100px;
   width: 100px;
-  border-radius: 100px;
+  border-radius: 100%;
   @include illustrations-color;
 }
 
 @mixin illustrations-color {
-  &.yellow{
+  &.yellow {
     background-color: $yellow;
   }
-  &.grey{
+  &.grey {
     background-color: $grey;
+  }
+}
+
+@mixin primary-button {
+  border: none;
+  border-radius: 15px;
+  height: 50px;
+  width: 250px;
+  background-color: $grey;
+  font-family: "Kumbh Sans";
+  font-size: 18px;
+  color: $white;
+  margin-top: 50px;
+  transition: 0.3s;
+  &:hover {
+    background-color: $light-grey;
+    color: $grey;
+    transition: 0.3s;
+  }
+}
+
+@mixin secondary-button {
+  border: none;
+  border-radius: 15px;
+  height: 30px;
+  width: 160px;
+  background-color: $light-grey;
+  font-family: "Kumbh Sans";
+  font-size: 16px;
+  color: $grey;
+  transition: 0.3s;
+  &:hover {
+    background-color: $grey;
+    color: $white;
+    transition: 0.3s;
   }
 }

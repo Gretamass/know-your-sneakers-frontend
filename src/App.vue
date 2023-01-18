@@ -27,7 +27,7 @@ export default {
 body,
 html {
   height: 100%;
-  width: 100%;
+  width: 100vw;
   background-image: url("@/assets/wave-haikei.svg");
   background-position: center;
   background-repeat: no-repeat;

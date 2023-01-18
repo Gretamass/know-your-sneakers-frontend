@@ -20,6 +20,44 @@ export const useMainStore = defineStore("counter", {
   },
 });
 
+export const useArticlesStore = defineStore("articleId", {
+  // arrow function recommended for full type inference
+  state: () => {
+    return {
+      articlesPreview: [
+        {
+          id: 1,
+          title: "Sportbačių dizaino evoliucija",
+          preview:
+            'Sportbačių dizainas vystėsi nuo paprastos drobės ir gumos iki aukštųjų technologijų medžiagų ir technologijų. Nuo pirmųjų "Converse All-Stars" iki dabartinių modelių, tokie prekių ženklai kaip "Nike" ir "Adidas" toliau diegia naujoves ir prisitaiko prie pramonės ir kultūros pokyčių.',
+          mainImageUrl: "img.png",
+          imageAlt: "",
+          goTo: "",
+        },
+        {
+          id: 2,
+          title: "Elektroninės sportinių batelių prekybos platformų augimas",
+          preview:
+            'Elektroninės prekybos platformos, tokios kaip "StockX", "GOAT" ir "Sneaker District", padarė sportbačių pirkimą ir pardavimą prieinamesnį ir patogesnį. Jos saugiai ir skaidriai sujungia pirkėjus ir pardavėjus ir suteikia galimybę įsigyti riboto tiražo ir sunkiai randamus sportbačius.',
+          mainImageUrl: "img_1.png",
+          imageAlt: "",
+          goTo: "",
+        },
+        {
+          id: 3,
+          title: "Ikoniškų sportbačių bendradarbiavimas",
+          preview:
+            'Ikoniški sportbačių bendradarbiavimo pavyzdžiai, tokie kaip Michaelo Jordano ir "Nike" arba Kanye Westo ir "Adidas", atliko svarbų vaidmenį sportbačių pramonėje. Jie rinkai suteikė naujų dizainų, technologijų ir kultūrinio poveikio, o sportbačių entuziastai dažnai yra labai paklausūs.',
+          mainImageUrl: "img_2.png",
+          imageAlt: "",
+          goTo: "",
+        },
+      ],
+      articles: [],
+    };
+  },
+});
+
 export const useStore = defineStore("storeId", {
   // arrow function recommended for full type inference
   state: () => {

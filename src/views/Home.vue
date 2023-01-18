@@ -1,17 +1,19 @@
 <template>
   <!--  <h1>Hello, {{ state.name }} {{ state.count }} many times</h1>-->
   <Hero></Hero>
+  <ArticlesPreview></ArticlesPreview>
 </template>
 
 <script>
 import Hero from "../components/Hero.vue";
 
 import { useMainStore } from "@/stores/mainStore";
-import HelloWorld from "@/components/HelloWorld.vue";
+import ArticlesPreview from "@/components/ArticlesPreview.vue";
 
 export default {
   name: "Home-item",
   components: {
+    ArticlesPreview,
     Hero,
   },
   setup() {
