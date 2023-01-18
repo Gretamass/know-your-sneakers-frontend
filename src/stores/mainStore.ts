@@ -58,6 +58,65 @@ export const useArticlesStore = defineStore("articleId", {
   },
 });
 
+export const useSneakersStore = defineStore("sneakerId", {
+  // arrow function recommended for full type inference
+  state: () => {
+    return {
+      sneakersPreview: [
+        {
+          id: 1,
+          model: "Air Jordan 1",
+          brand: "Nike",
+          mainImageUrl: "img.png",
+          imageAlt: "",
+          goTo: "",
+        },
+        {
+          id: 2,
+          model: "Adidas Yeezy Boost",
+          brand: "Adidas",
+          mainImageUrl: "img_1.png",
+          imageAlt: "",
+          goTo: "",
+        },
+        {
+          id: 3,
+          model: "Air Force 1",
+          brand: "Nike",
+          mainImageUrl: "img_2.png",
+          imageAlt: "",
+          goTo: "",
+        },
+        {
+          id: 4,
+          model: "Air Max 90",
+          brand: "Nike",
+          mainImageUrl: "img_2.png",
+          imageAlt: "",
+          goTo: "",
+        },
+        {
+          id: 5,
+          model: "Adidas Superstar",
+          brand: "Adidas",
+          mainImageUrl: "img.png",
+          imageAlt: "",
+          goTo: "",
+        },
+        {
+          id: 6,
+          model: "Puma CLyde",
+          brand: "Puma",
+          mainImageUrl: "img_1.png",
+          imageAlt: "",
+          goTo: "",
+        },
+      ],
+      sneakers: [],
+    };
+  },
+});
+
 export const useStore = defineStore("storeId", {
   // arrow function recommended for full type inference
   state: () => {

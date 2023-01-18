@@ -29,7 +29,6 @@ export default {
   name: "ArticlesPreview",
   setup() {
     const { articlesPreview } = useArticlesStore();
-    // :src="`../assets/articles/${article.mainImageUrl}`"
     return {
       articlesPreview,
     };
@@ -55,21 +54,11 @@ export default {
   @include primary-button;
 }
 .heading-container {
-  max-width: 1550px;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  h1 {
-    font-family: "Kumbh Sans";
-    font-size: 36px;
-    font-weight: 600;
-  }
+  @include heading-container;
 }
 
 .illustrations {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include flex-center-column;
   align-items: flex-end;
   position: relative;
   width: 100vw;

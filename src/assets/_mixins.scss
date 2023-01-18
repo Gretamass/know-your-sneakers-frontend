@@ -1,5 +1,23 @@
 @import "./_variables.scss";
 
+@mixin flex-center-column {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@mixin heading-container {
+  max-width: 1550px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  h1 {
+    font-family: "Kumbh Sans";
+    font-size: 36px;
+    font-weight: 600;
+  }
+}
+
 @mixin pill {
   height: 100px;
   width: 706px;
