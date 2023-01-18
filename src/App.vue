@@ -22,15 +22,17 @@ export default {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 body,
 html {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-image: url("@/assets/wave-haikei.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 8px 0;
+  margin: 0;
 }
 </style>

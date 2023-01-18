@@ -11,6 +11,11 @@
       <img src="../assets/juicy-boy-analyzes-graphs-and-diagrams.gif" />
     </div>
   </div>
+  <div class="pill-illustrations">
+    <div class="grey circle"></div>
+    <div class="yellow pill"></div>
+    <div class="grey pill"></div>
+  </div>
 </template>
 
 <script>
@@ -20,6 +25,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "@/assets/_mixins.scss";
+
 .hero-container {
   display: flex;
   align-items: center;
@@ -47,6 +54,36 @@ export default {
       font-size: 21px;
       font-weight: 500;
     }
+  }
+}
+
+.pill-illustrations {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+
+  .circle {
+    @include circle;
+    margin-left: 100px;
+    position: absolute;
+    bottom: 0px;
+  }
+  .yellow.pill {
+    @include pill;
+    height: 100px;
+    width: 706px;
+    position: absolute;
+  }
+  .grey.pill {
+    @include pill;
+    height: 60px;
+    width: 430px;
+    position: absolute;
+    top: 20px;
   }
 }
 </style>
