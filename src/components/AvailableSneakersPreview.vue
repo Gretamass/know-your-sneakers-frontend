@@ -49,6 +49,7 @@
         </div>
       </div>
     </div>
+    <button class="primary-button">Žiūrėti daugiau sportbačių</button>
   </div>
 </template>
 
@@ -89,9 +90,10 @@ export default {
 
 .available-sneakers-container {
   @include flex-center-column;
+  align-items: center;
   max-width: 1550px;
   width: 100%;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 
   .sneaker-brands-container {
     max-width: 1550px;
@@ -105,7 +107,6 @@ export default {
 
   .available-sneakers-preview-container {
     @include flex-center-column;
-
     .available-sneaker-preview {
       display: flex;
       margin-top: 100px;
