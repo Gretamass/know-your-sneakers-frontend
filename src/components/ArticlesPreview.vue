@@ -1,5 +1,6 @@
 <template>
-  <div class="illustrations">
+  <!--TODO: learn how to hide half of the illustrtion behind the screen-->
+  <div class="illustrations" v-if="false">
     <div class="yellow circle"></div>
     <div class="grey circle"></div>
   </div>

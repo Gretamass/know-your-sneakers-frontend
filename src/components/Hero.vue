@@ -63,7 +63,7 @@ export default {
   justify-content: center;
   align-items: flex-start;
   position: relative;
-  width: 100vw;
+  width: 100%;
   margin-top: 50px;
   margin-bottom: 100px;
 
