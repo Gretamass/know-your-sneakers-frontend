@@ -4,42 +4,41 @@
       <div class="sign-up-form">
         <h1>Registruotis naujai paskyrai</h1>
         <h2>Sveiki atvykę!</h2>
-        <form action="#" method="post">
-          <div>
-            <label for="email" class="label">El. Paštas</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Įveskite savo el. paštą"
-            />
-          </div>
-          <div>
-            <label for="password" class="label">Slaptažodis</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Įveskite savo slaptažodį"
-            />
-            <!--<span>Enter a password longer than 8 characters</span>-->
-          </div>
-          <div>
-            <label for="confirm_password" class="label"
-              >Pakartokite slaptažodį</label
-            >
-            <input
-              id="confirm_password"
-              name="confirm_password"
-              type="password"
-              placeholder="Pakartotinai įveskite savo slaptažodį"
-            />
-            <!--<span>Your passwords do not match</span>-->
-          </div>
-          <button type="submit" id="submit" class="primary-button">
+        <div class="form">
+          <label for="email" class="label">El. Paštas</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Įveskite savo el. paštą"
+            v-model="newUser.email"
+          />
+
+          <label for="password" class="label">Slaptažodis</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Įveskite savo slaptažodį"
+            v-model="newUser.password"
+          />
+          <!--<span>Enter a password longer than 8 characters</span>-->
+
+          <label for="confirm_password" class="label"
+            >Pakartokite slaptažodį</label
+          >
+          <input
+            id="confirm_password"
+            name="confirm_password"
+            type="password"
+            placeholder="Pakartotinai įveskite savo slaptažodį"
+          />
+          <!--<span>Your passwords do not match</span>-->
+          <button class="primary-button" @click="addNewUser">
             Registruotis
           </button>
-        </form>
+        </div>
+        <h3>{{ output }}</h3>
       </div>
       <div class="illustration-container">
         <div class="image-container">
@@ -51,8 +50,34 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "SignUp",
+  data() {
+    return {
+      newUser: {
+        email: "",
+        password: "",
+      },
+      output: "",
+    };
+  },
+  methods: {
+    addNewUser() {
+      axios
+        .post("/user", {
+          email: this.newUser.email,
+          password: this.newUser.password,
+        })
+        .then(function (response) {
+          this.output = response.data;
+        })
+        .catch(function (error) {
+          this.output = error;
+        });
+    },
+  },
 };
 </script>
 
@@ -97,27 +122,28 @@ export default {
       h2 {
       }
 
-      form {
+      .form {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        & > div {
+        & > {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
           padding: 5px 0;
-          label {
-            padding: 5px 0;
-          }
-          input {
-            border: 1px solid #37393a;
-            border-radius: 15px;
-            height: 35px;
-            width: 450px;
-            padding: 5px 10px;
-          }
+        }
+        label {
+          padding: 5px 0;
+        }
+        input {
+          border: 1px solid #37393a;
+          border-radius: 15px;
+          height: 35px;
+          width: 450px;
+          padding: 5px 10px;
+          margin-bottom: 15px;
         }
       }
     }
