@@ -95,7 +95,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 75px;
+  margin-top: 125px;
   margin-bottom: 100px;
   height: 100%;
   .sign-up-container {
@@ -155,6 +155,7 @@ export default {
     .image-container {
       width: 100%;
       height: auto;
+      margin-top: 100px;
       img {
         width: 100%;
         -webkit-transform: scaleX(-1);

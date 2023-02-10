@@ -1,5 +1,4 @@
 <template>
-  <!--  <h1>Hello, {{ state.name }} {{ state.count }} many times</h1>-->
   <Hero></Hero>
   <ArticlesPreview></ArticlesPreview>
   <SneakersHistoryPreview></SneakersHistoryPreview>
