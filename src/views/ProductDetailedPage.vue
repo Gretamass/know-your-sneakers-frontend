@@ -2,7 +2,10 @@
   <div class="sneaker-history-page">
     <div class="introduction">
       <div class="image-container">
-        <img :src="getImgUrl(sneaker.mainImageUrl)" />
+        <img
+          v-if="sneaker && sneaker.mainImageUrl"
+          :src="`../src/assets/sneakers/${sneaker.mainImageUrl}`"
+        />
       </div>
       <div class="main-text">
         <h1>{{ sneaker.model }}</h1>
@@ -61,7 +64,7 @@ export default {
     const { sneakers } = useSneakersStore();
     const sneaker = ref(null);
 
-    const sneakerName = window.location.pathname.split("/").pop();
+    const sneakerName = window.location.hash.split("/").pop();
 
     if (sneakers) {
       sneaker.value = sneakers.find((sneakerItem) => {
@@ -78,8 +81,7 @@ export default {
   },
   methods: {
     getImgUrl(pic) {
-      console.log(pic);
-      return require("../assets/sneakers/" + pic);
+      return "../src/assets/sneakers/" + pic;
     },
     addToWishlist() {
       //   TODO: add sneaker to user wishlist

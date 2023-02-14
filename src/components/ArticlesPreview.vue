@@ -26,9 +26,18 @@
 
 <script>
 import { useArticlesStore } from "@/stores/mainStore";
+import axios from "axios";
 export default {
   name: "ArticlesPreview",
   setup() {
+    axios
+      .get("http://localhost:8080/user")
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     const { articlesPreview } = useArticlesStore();
     return {
       articlesPreview,
@@ -39,7 +48,7 @@ export default {
   },
   methods: {
     getImgUrl(pic) {
-      return require("../assets/articles/" + pic);
+      return "../src/assets/articles/" + pic;
     },
   },
 };

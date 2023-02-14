@@ -66,15 +66,15 @@ export default {
   methods: {
     addNewUser() {
       axios
-        .post("/user", {
+        .post("http://localhost:8080/user", {
           email: this.newUser.email,
           password: this.newUser.password,
         })
         .then(function (response) {
-          this.output = response.data;
+          console.log(response.data);
         })
         .catch(function (error) {
-          this.output = error;
+          console.log(error);
         });
     },
   },
@@ -127,13 +127,13 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        & > {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-start;
-          padding: 5px 0;
-        }
+        //& > {
+        //  display: flex;
+        //  flex-direction: column;
+        //  justify-content: center;
+        //  align-items: flex-start;
+        //  padding: 5px 0;
+        //}
         label {
           padding: 5px 0;
         }

@@ -1,23 +1,33 @@
 <template>
   <div class="header">
     <div class="logo-container">
-      <img src="../assets/logo.png" />
+      <router-link to="/"><img src="../assets/logo.png" /></router-link>
     </div>
     <nav>
-      <router-link to="/sneakers-history">Sportbačių istorijos</router-link>
-      <router-link to="/articles">Tinklaraštis</router-link>
-      <router-link to="/sneakers-in-stock">Sportbačiai prekyboje</router-link>
-      <router-link to="/about-us">Apie mus</router-link>
+      <router-link :to="`/${Routes.SNEAKERS_HISTORY}`"
+        >Sportbačių istorijos</router-link
+      >
+      <router-link :to="`/${Routes.ARTICLES}`">Tinklaraštis</router-link>
+      <router-link :to="`/${Routes.SNEAKERS_IN_STOCK}`"
+        >Sportbačiai prekyboje</router-link
+      >
+      <router-link :to="`/${Routes.ABOUT_US}`">Apie mus</router-link>
       <div class="sign-up">
-        <router-link to="/sign-up">Prisijungti</router-link>
+        <router-link :to="`/${Routes.SIGN_UP}`">Prisijungti</router-link>
       </div>
     </nav>
   </div>
 </template>
 
 <script>
+import { Routes } from "@/router";
 export default {
   name: "Header-item",
+  computed: {
+    Routes() {
+      return Routes;
+    },
+  },
 };
 </script>
 

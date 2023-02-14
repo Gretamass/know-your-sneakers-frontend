@@ -66,10 +66,10 @@ export default {
   },
   methods: {
     getImgUrl(pic) {
-      return require("../assets/sneakers/" + pic);
+      return "../src/assets/sneakers/" + pic;
     },
     getShopImgUrl(pic) {
-      return require("../assets/shops/" + pic);
+      return "../src/assets/shops/" + pic;
     },
   },
 };

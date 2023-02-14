@@ -53,7 +53,7 @@
 
 <script>
 import { useSneakersStore } from "@/stores/mainStore";
-import router from "@/router";
+import router, { Routes } from "@/router";
 
 export default {
   name: "SneakersHistory",
@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     getImgUrl(pic) {
-      return require("../assets/sneakers/" + pic);
+      return "../src/assets/sneakers/" + pic;
     },
     previousPage() {
       if (this.currentPage > 1) {
@@ -118,7 +118,10 @@ export default {
       });
     },
     selectSneaker(sneakerName) {
-      router.push({ name: "product detailed page", params: { sneakerName } });
+      router.push({
+        name: Routes.SINGLE_SNEAKER_HISTORY,
+        params: { sneakerName },
+      });
     },
   },
 };

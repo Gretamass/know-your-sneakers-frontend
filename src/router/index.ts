@@ -1,48 +1,62 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
+
+export enum Routes {
+  HOME = "home",
+  ABOUT_US = "about-us",
+  ARTICLES = "articles",
+  SINGLE_ARTICLE = "single-article",
+  SIGN_UP = "sign-up",
+  SNEAKERS_HISTORY = "sneakers-history",
+  SINGLE_SNEAKER_HISTORY = "single-sneaker-history",
+  SNEAKERS_IN_STOCK = "sneakers-in-stock",
+}
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
+    name: Routes.HOME,
     component: Home,
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/about-us",
+    name: Routes.ABOUT_US,
+    component: () => import("../views/AboutView.vue"),
+  },
+  {
+    path: "/articles",
+    name: Routes.ARTICLES,
+    component: () => import(""),
+  },
+  {
+    path: "/articles/:articleName",
+    name: Routes.SINGLE_ARTICLE,
+    component: () => import(""),
   },
   {
     path: "/sign-up",
-    name: "sign up",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/SignUp.vue"),
+    name: Routes.SIGN_UP,
+    component: () => import("../views/SignUp.vue"),
   },
   {
     path: "/sneakers-history",
-    name: "sneakers history",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/SneakersHistory.vue"),
+    name: Routes.SNEAKERS_HISTORY,
+    component: () => import("../views/SneakersHistory.vue"),
   },
   {
     path: "/sneakers-history/:sneakerName",
-    name: "product detailed page",
+    name: Routes.SINGLE_SNEAKER_HISTORY,
     component: () => import("@/views/ProductDetailedPage.vue"),
+  },
+  {
+    path: "/sneakers-in-stock",
+    name: Routes.SNEAKERS_IN_STOCK,
+    component: () => import(""),
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes,
 });
 
