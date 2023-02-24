@@ -1,8 +1,8 @@
 <template>
-  <div class="sign-up-page">
-    <div class="sign-up-container">
-      <div class="sign-up-form">
-        <h1>Registruotis naujai paskyrai</h1>
+  <div class="log-in-page">
+    <div class="log-in-container">
+      <div class="log-in-form">
+        <h1>Prisijunkite prie savo paskyros</h1>
         <h2>Sveiki atvykę!</h2>
         <div class="form">
           <label for="email" class="label">El. Paštas</label>
@@ -11,7 +11,7 @@
             name="email"
             type="email"
             placeholder="Įveskite savo el. paštą"
-            v-model="newUser.email"
+            v-model="user.email"
           />
 
           <label for="password" class="label">Slaptažodis</label>
@@ -20,26 +20,12 @@
             name="password"
             type="password"
             placeholder="Įveskite savo slaptažodį"
-            v-model="newUser.password"
+            v-model="user.password"
           />
-          <!--<span>Enter a password longer than 8 characters</span>-->
-
-          <label for="confirm_password" class="label"
-            >Pakartokite slaptažodį</label
-          >
-          <input
-            id="confirm_password"
-            name="confirm_password"
-            type="password"
-            placeholder="Pakartotinai įveskite savo slaptažodį"
-          />
-          <!--<span>Your passwords do not match</span>-->
-          <button class="primary-button" @click="addNewUser">
-            Registruotis
-          </button>
+          <button class="primary-button" @click="logInUser">Prisijungti</button>
           <span
-            ><router-link :to="`/${Routes.LOG_IN}`"
-              >Jau turi paskyrą? Prisijunk prie mūsų dabar
+            ><router-link :to="`/${Routes.SIGN_UP}`"
+              >Neturi paskyros? Susikūrk naują ir prisijunk prie
               mūsų!</router-link
             ></span
           >
@@ -59,10 +45,10 @@ import axios from "axios";
 import { Routes } from "@/router";
 
 export default {
-  name: "SignUp",
+  name: "LogIn",
   data() {
     return {
-      newUser: {
+      user: {
         email: "",
         password: "",
       },
@@ -75,11 +61,11 @@ export default {
     },
   },
   methods: {
-    addNewUser() {
+    logInUser() {
       axios
-        .post("http://localhost:8080/user", {
-          email: this.newUser.email,
-          password: this.newUser.password,
+        .post("http://localhost:8080/login", {
+          email: this.user.email,
+          password: this.user.password,
         })
         .then(function (response) {
           console.log(response.data);
@@ -101,7 +87,7 @@ export default {
   background-color: $yellow;
 }
 
-.sign-up-page {
+.log-in-page {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -109,7 +95,7 @@ export default {
   margin-top: 125px;
   margin-bottom: 100px;
   height: 100%;
-  .sign-up-container {
+  .log-in-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -121,7 +107,7 @@ export default {
     & > div {
       flex: 1;
     }
-    .sign-up-form {
+    .log-in-form {
       display: flex;
       flex-direction: column;
       justify-content: center;
