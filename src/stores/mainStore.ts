@@ -1,4 +1,18 @@
 import { defineStore } from "pinia";
+import axios from "axios";
+
+const useMainStore = defineStore("main", {
+  // arrow function recommended for full type inference
+  state: () => {
+    return {
+      backendUrl: "http://localhost:8080",
+      user: {},
+      loadingStatus: false,
+    };
+  },
+  actions: {},
+  getters: {},
+});
 
 export const useArticlesStore = defineStore("articleId", {
   // arrow function recommended for full type inference
@@ -42,361 +56,30 @@ export const useSneakersStore = defineStore("sneakerId", {
   // arrow function recommended for full type inference
   state: () => {
     return {
-      sneakersPreview: [
-        {
-          id: 1,
-          model: "Air Jordan 1",
-          brand: "Nike",
-          mainImageUrl: "img.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 2,
-          model: "Adidas Yeezy Boost",
-          brand: "Adidas",
-          mainImageUrl: "img_1.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 3,
-          model: "Air Force 1",
-          brand: "Nike",
-          mainImageUrl: "img_2.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 4,
-          model: "Air Max 90",
-          brand: "Nike",
-          mainImageUrl: "img_2.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 5,
-          model: "Adidas Superstar",
-          brand: "Adidas",
-          mainImageUrl: "img.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 6,
-          model: "Puma CLyde",
-          brand: "Puma",
-          mainImageUrl: "img_1.png",
-          imageAlt: "",
-          goTo: "",
-        },
-      ],
-      sneakers: [
-        {
-          id: 1,
-          model: "Air Jordan 1",
-          brand: "Nike",
-          mainImageUrl: "img.png",
-          imageAlt: "",
-          goTo: "air-jordan-1",
-          introduction:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-          mainInformation:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          imageCarousel: ["img.png", "img_1.png", "img_2.png", "img_3.png"],
-          additionalInformation: [
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          ],
-          additionalImages: ["img.png"],
-        },
-        {
-          id: 2,
-          model: "Adidas Yeezy Boost",
-          brand: "Adidas",
-          mainImageUrl: "img_1.png",
-          imageAlt: "",
-          goTo: "adidas-yeezy-boost",
-        },
-        {
-          id: 3,
-          model: "Air Force 1",
-          brand: "Nike",
-          mainImageUrl: "img_2.png",
-          imageAlt: "",
-          goTo: "air-force-1",
-        },
-        {
-          id: 4,
-          model: "Air Max 90",
-          brand: "Nike",
-          mainImageUrl: "img_2.png",
-          imageAlt: "",
-          goTo: "air-max-90",
-        },
-        {
-          id: 5,
-          model: "Adidas Superstar",
-          brand: "Adidas",
-          mainImageUrl: "img.png",
-          imageAlt: "",
-          goTo: "adidas-superstar",
-        },
-        {
-          id: 6,
-          model: "Puma Clyde",
-          brand: "Puma",
-          mainImageUrl: "img_1.png",
-          imageAlt: "",
-          goTo: "puma-clyde",
-        },
-        {
-          id: 7,
-          model: "Air Jordan 1",
-          brand: "Nike",
-          mainImageUrl: "img.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 8,
-          model: "Adidas Yeezy Boost",
-          brand: "Adidas",
-          mainImageUrl: "img_1.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 9,
-          model: "Air Force 1",
-          brand: "Nike",
-          mainImageUrl: "img_2.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 10,
-          model: "Air Max 90",
-          brand: "Nike",
-          mainImageUrl: "img_2.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 11,
-          model: "Adidas Superstar",
-          brand: "Adidas",
-          mainImageUrl: "img.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 12,
-          model: "Puma CLyde",
-          brand: "Puma",
-          mainImageUrl: "img_1.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 13,
-          model: "Air Jordan 1",
-          brand: "Nike",
-          mainImageUrl: "img.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 14,
-          model: "Adidas Yeezy Boost",
-          brand: "Adidas",
-          mainImageUrl: "img_1.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 15,
-          model: "Air Force 1",
-          brand: "Nike",
-          mainImageUrl: "img_2.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 16,
-          model: "Air Max 90",
-          brand: "Nike",
-          mainImageUrl: "img_2.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 17,
-          model: "Adidas Superstar",
-          brand: "Adidas",
-          mainImageUrl: "img.png",
-          imageAlt: "",
-          goTo: "",
-        },
-        {
-          id: 18,
-          model: "Puma CLyde",
-          brand: "Puma",
-          mainImageUrl: "img_1.png",
-          imageAlt: "",
-          goTo: "",
-        },
-      ],
-      availableSneakersPreview: [
-        {
-          id: 1,
-          name: "Air Jordan 1",
-          model: "Air Jordan 1",
-          brand: "Nike",
-          mainImageUrl: "img.png",
-          price: 125,
-          imageAlt: "",
-          availability: [
-            {
-              id: 1,
-              name: "Kixart",
-              hasInStock: true,
-              price: 125,
-              mainImageUrl: "img.png",
-              imageALt: "",
-              goTo: "",
-            },
-            {
-              id: 2,
-              name: "Sizeer",
-              hasInStock: false,
-              price: null,
-              mainImageUrl: "img_1.png",
-              imageALt: "",
-              goTo: "",
-            },
-            {
-              id: 3,
-              name: "BALLZY",
-              hasInStock: true,
-              price: 127,
-              mainImageUrl: "img_2.png",
-              imageALt: "",
-              goTo: "",
-            },
-            {
-              id: 4,
-              name: "SNKRS",
-              hasInStock: true,
-              price: 139,
-              mainImageUrl: "img_3.png",
-              imageALt: "",
-              goTo: "",
-            },
-          ],
-          goTo: "",
-        },
-        {
-          id: 2,
-          name: "Adidas Yeezy Boost",
-          model: "Adidas Yeezy Boost",
-          brand: "Adidas",
-          mainImageUrl: "img_1.png",
-          price: 125,
-          imageAlt: "",
-          availability: [
-            {
-              id: 1,
-              name: "Kixart",
-              hasInStock: true,
-              price: 125,
-              mainImageUrl: "img.png",
-              imageALt: "",
-              goTo: "",
-            },
-            {
-              id: 2,
-              name: "Sizeer",
-              hasInStock: false,
-              price: null,
-              mainImageUrl: "img_1.png",
-              imageALt: "",
-              goTo: "",
-            },
-            {
-              id: 3,
-              name: "BALLZY",
-              hasInStock: false,
-              price: null,
-              mainImageUrl: "img_2.png",
-              imageALt: "",
-              goTo: "",
-            },
-            {
-              id: 4,
-              name: "SNKRS",
-              hasInStock: true,
-              price: 139,
-              mainImageUrl: "img_3.png",
-              imageALt: "",
-              goTo: "",
-            },
-          ],
-          goTo: "",
-        },
-        {
-          id: 3,
-          name: "Air Force 1",
-          model: "Air Force 1",
-          brand: "Nike",
-          mainImageUrl: "img_2.png",
-          price: 125,
-          imageAlt: "",
-          availability: [
-            {
-              id: 1,
-              name: "Kixart",
-              hasInStock: false,
-              price: null,
-              mainImageUrl: "img.png",
-              imageALt: "",
-              goTo: "",
-            },
-            {
-              id: 2,
-              name: "Sizeer",
-              hasInStock: true,
-              price: 127,
-              mainImageUrl: "img_1.png",
-              imageALt: "",
-              goTo: "",
-            },
-            {
-              id: 3,
-              name: "BALLZY",
-              hasInStock: false,
-              price: null,
-              mainImageUrl: "img_2.png",
-              imageALt: "",
-              goTo: "",
-            },
-            {
-              id: 4,
-              name: "SNKRS",
-              hasInStock: true,
-              price: 139,
-              mainImageUrl: "img_3.png",
-              imageALt: "",
-              goTo: "",
-            },
-          ],
-          goTo: "",
-        },
-      ],
+      sneakersPreview: [],
+      sneakers: [],
       pagination: {
         itemsPerPage: 9,
       },
     };
+  },
+  actions: {
+    async fetchSneakersPreview() {
+      const mainStore = useMainStore();
+
+      const response = await axios.get(`${mainStore.backendUrl}/sneaker`);
+      console.log(response.data);
+      this.sneakers = response.data;
+    },
+    async fetchAvailableSneakersPreview() {
+      const mainStore = useMainStore();
+
+      const response = await axios.get(
+        `${mainStore.backendUrl}/sneaker/availability`
+      );
+      console.log(response.data);
+      this.sneakers = response.data;
+    },
   },
 });
 

@@ -8,6 +8,7 @@ export enum Routes {
   SINGLE_ARTICLE = "single-article",
   SIGN_UP = "sign-up",
   LOG_IN = "log-in",
+  PROFILE = "profile",
   SNEAKERS_HISTORY = "sneakers-history",
   SINGLE_SNEAKER_HISTORY = "single-sneaker-history",
   SNEAKERS_IN_STOCK = "sneakers-in-stock",
@@ -43,6 +44,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/log-in",
     name: Routes.LOG_IN,
     component: () => import("../views/LogIn.vue"),
+  },
+  {
+    path: "/profile",
+    name: Routes.PROFILE,
+    component: () => import("../views/Profile.vue"),
   },
   {
     path: "/sneakers-history",

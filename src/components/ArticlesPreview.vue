@@ -33,7 +33,7 @@ export default {
     axios
       .get("http://localhost:8080/user")
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);

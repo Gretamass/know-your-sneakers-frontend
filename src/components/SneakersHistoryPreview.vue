@@ -9,29 +9,47 @@
       <button>Adidas</button>
       <button>Puma</button>
     </div>
-    <div class="sneakers-preview-container">
+    <div class="sneakers-preview-container" v-if="sneakersPreview">
       <div
         v-for="sneaker in sneakersPreview"
         :key="sneaker.id"
         class="sneaker-preview"
       >
         <div class="image-container">
-          <img :src="getImgUrl(sneaker.mainImageUrl)" />
+          <img :src="getImgUrl(sneaker.imageUrl)" />
         </div>
         <h2>{{ sneaker.model }}</h2>
         <h3>{{ sneaker.brand }}</h3>
       </div>
     </div>
-    <button class="primary-button">Sužinoti daugiau</button>
+    <router-link :to="`/${Routes.SNEAKERS_HISTORY}`"
+      ><button class="primary-button">Sužinoti daugiau</button></router-link
+    >
   </div>
 </template>
 
 <script>
 import { useSneakersStore } from "@/stores/mainStore";
+import { onMounted, ref } from "vue";
+import { Routes } from "@/router";
 export default {
   name: "SneakersHistoryPreview",
+  computed: {
+    Routes() {
+      return Routes;
+    },
+  },
   setup() {
-    const { sneakersPreview } = useSneakersStore();
+    const sneakersStore = useSneakersStore();
+    const sneakersPreview = ref([]);
+
+    onMounted(() => {
+      sneakersStore.fetchSneakersPreview().then(() => {
+        console.log(sneakersStore.sneakers);
+        sneakersPreview.value = sneakersStore.sneakers.data.slice(0, 6);
+      });
+    });
+
     return {
       sneakersPreview,
     };

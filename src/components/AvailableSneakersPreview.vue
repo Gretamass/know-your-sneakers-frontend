@@ -20,28 +20,30 @@
         <h2>{{ sneaker.name }}</h2>
         <div class="sneaker-info">
           <div class="image-container">
-            <img :src="getImgUrl(sneaker.mainImageUrl)" />
+            <img :src="getImgUrl(sneaker.imageUrl)" />
           </div>
           <div class="shop-container">
             <div
-              v-for="shop in sneaker.availability"
-              :key="shop.id"
+              v-for="availability in sneaker.availability"
+              :key="availability.id"
               class="shop"
             >
               <div class="image-container">
-                <img :src="getShopImgUrl(shop.mainImageUrl)" />
+                <img :src="getShopImgUrl(availability.providerId)" />
               </div>
               <div
                 class="stock-status"
                 :class="{
-                  'in-stock': shop.hasInStock,
-                  'out-of-stock': !shop.hasInStock,
+                  'in-stock': availability.available,
+                  'out-of-stock': !availability.available,
                 }"
               >
-                {{ shop.hasInStock ? "Yra prekyboje" : "Nėra prekyboje" }}
+                {{
+                  availability.available ? "Yra prekyboje" : "Nėra prekyboje"
+                }}
               </div>
               <span class="price">{{
-                shop.price ? shop.price + " €" : ""
+                availability.price ? availability.price + " €" : " - "
               }}</span>
             </div>
             <button class="primary-button">Žiūrėti daugiau parduotuvių</button>
@@ -55,11 +57,24 @@
 
 <script>
 import { useSneakersStore } from "@/stores/mainStore";
+import { onMounted, ref } from "vue";
 
 export default {
   name: "AvailableSneakersPreview",
   setup() {
-    const { availableSneakersPreview } = useSneakersStore();
+    const sneakersStore = useSneakersStore();
+    const availableSneakersPreview = ref([]);
+
+    onMounted(() => {
+      sneakersStore.fetchAvailableSneakersPreview().then(() => {
+        console.log(sneakersStore.sneakers);
+        availableSneakersPreview.value = sneakersStore.sneakers.data.slice(
+          0,
+          6
+        );
+      });
+    });
+
     return {
       availableSneakersPreview,
     };
@@ -68,8 +83,13 @@ export default {
     getImgUrl(pic) {
       return "../src/assets/sneakers/" + pic;
     },
-    getShopImgUrl(pic) {
-      return "../src/assets/shops/" + pic;
+    getShopImgUrl(providerId) {
+      switch (providerId) {
+        case 1:
+          return "../src/assets/shops/img.png";
+        case 2:
+          return "../src/assets/shops/img_1.png";
+      }
     },
   },
 };

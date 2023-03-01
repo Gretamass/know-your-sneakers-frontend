@@ -37,7 +37,7 @@
           @click="selectSneaker(sneaker.goTo)"
         >
           <div class="image-container">
-            <img :src="getImgUrl(sneaker.mainImageUrl)" />
+            <img :src="getImgUrl(sneaker.imageUrl)" />
           </div>
           <h2>{{ sneaker.model }}</h2>
           <h3>{{ sneaker.brand }}</h3>
@@ -54,6 +54,7 @@
 <script>
 import { useSneakersStore } from "@/stores/mainStore";
 import router, { Routes } from "@/router";
+import { onMounted, ref } from "vue";
 
 export default {
   name: "SneakersHistory",
@@ -64,7 +65,17 @@ export default {
     };
   },
   setup() {
-    const { sneakers, pagination } = useSneakersStore();
+    const sneakersStore = useSneakersStore();
+    const sneakers = ref([]);
+
+    onMounted(() => {
+      sneakersStore.fetchSneakersPreview().then(() => {
+        console.log(sneakers);
+        sneakers.value = sneakersStore.sneakers.data;
+      });
+    });
+    const pagination = sneakersStore.pagination;
+
     return {
       sneakers,
       pagination,
