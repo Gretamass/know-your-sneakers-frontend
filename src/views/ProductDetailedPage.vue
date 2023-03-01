@@ -1,16 +1,16 @@
 <template>
-  <div class="sneaker-history-page">
+  <div class="sneaker-history-page" v-if="!loading">
     <div class="introduction">
       <div class="image-container">
         <img
-          v-if="sneaker && sneaker.mainImageUrl"
-          :src="`../src/assets/sneakers/${sneaker.mainImageUrl}`"
+          v-if="sneaker && sneaker.imageUrl"
+          :src="`../src/assets/sneakers/${sneaker.brand}/${sneaker.imageUrl}`"
         />
       </div>
       <div class="main-text">
         <h1>{{ sneaker.model }}</h1>
         <h2>{{ sneaker.brand }}</h2>
-        <p>{{ sneaker.introduction }}</p>
+        <p>{{ sneaker.sneakerInformation.mainInfo }}</p>
         <button @click="addToWishlist()">
           Įtraukti į norų sąrašą
           <!-- TODO: add an indication when sneaker is already added to wishlist -->
@@ -18,10 +18,10 @@
         </button>
       </div>
     </div>
-    <div class="main-information">
-      <p>{{ sneaker.mainInformation }}</p>
+    <div v-if="sneaker.sneakerInformation.additionalInfo" class="main-information">
+      <p>{{ sneaker.sneakerInformation.additionalInfo }}</p>
     </div>
-    <div class="image-carousel">
+    <div class="image-carousel" v-if="sneaker.imageCarousel">
       <!-- TODO: create an image carousel-->
       <img :src="getImgUrl(sneaker.imageCarousel[0])" />
       <div class="pagination">
@@ -57,31 +57,36 @@ import { ref, onMounted } from "vue";
 
 export default {
   name: "ProductDetailedPage",
-  data() {
-    return {};
+  props: {
+    sneakerId: {
+      type: String,
+      required: true,
+    },
+    sneakerName: {
+      type: String,
+      required: true,
+    },
   },
-  setup() {
-    const { sneakers } = useSneakersStore();
+  setup(props) {
+    const sneakersStore = useSneakersStore();
     const sneaker = ref(null);
+    const loading = ref(true);
 
-    const sneakerName = window.location.hash.split("/").pop();
-
-    if (sneakers) {
-      sneaker.value = sneakers.find((sneakerItem) => {
-        // TODO: remove this check when all sneakers have goTo attribute
-        if (sneakerItem.goTo) {
-          return sneakerItem.goTo === sneakerName;
-        }
+    onMounted(() => {
+      sneakersStore.fetchSneakerInfo(props.sneakerId).then((response) => {
+        sneaker.value = response.data;
+        loading.value = false;
       });
-    }
+    });
 
     return {
       sneaker,
+      loading,
     };
   },
   methods: {
-    getImgUrl(pic) {
-      return "../src/assets/sneakers/" + pic;
+    getImgUrl(brand, picUrl) {
+      return "../src/assets/sneakers/" + brand + "/" + picUrl;
     },
     addToWishlist() {
       //   TODO: add sneaker to user wishlist

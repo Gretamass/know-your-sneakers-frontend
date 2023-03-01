@@ -67,7 +67,6 @@ export default {
 
     onMounted(() => {
       sneakersStore.fetchAvailableSneakersPreview().then(() => {
-        console.log(sneakersStore.sneakers);
         availableSneakersPreview.value = sneakersStore.sneakers.data.slice(
           0,
           6

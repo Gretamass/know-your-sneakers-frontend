@@ -54,11 +54,20 @@ const routes: Array<RouteRecordRaw> = [
     path: "/sneakers-history",
     name: Routes.SNEAKERS_HISTORY,
     component: () => import("../views/SneakersHistory.vue"),
+    // children: [
+    //   {
+    //     path: "/:sneakerName",
+    //     name: Routes.SINGLE_SNEAKER_HISTORY,
+    //     component: () => import("@/views/ProductDetailedPage.vue"),
+    //     props: true,
+    //   },
+    // ],
   },
   {
-    path: "/sneakers-history/:sneakerName",
+    path: "/sneakers-history/:sneakerId/:sneakerName",
     name: Routes.SINGLE_SNEAKER_HISTORY,
     component: () => import("@/views/ProductDetailedPage.vue"),
+    props: true,
   },
   {
     path: "/sneakers-in-stock",

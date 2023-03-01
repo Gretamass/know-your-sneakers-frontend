@@ -68,7 +68,6 @@ export const useSneakersStore = defineStore("sneakerId", {
       const mainStore = useMainStore();
 
       const response = await axios.get(`${mainStore.backendUrl}/sneaker`);
-      console.log(response.data);
       this.sneakers = response.data;
     },
     async fetchAvailableSneakersPreview() {
@@ -77,8 +76,15 @@ export const useSneakersStore = defineStore("sneakerId", {
       const response = await axios.get(
         `${mainStore.backendUrl}/sneaker/availability`
       );
-      console.log(response.data);
       this.sneakers = response.data;
+    },
+    async fetchSneakerInfo(sneakerId: any) {
+      const mainStore = useMainStore();
+
+      const response = await axios.get(
+        `${mainStore.backendUrl}/sneaker/${sneakerId}`
+      );
+      return response.data;
     },
   },
 });

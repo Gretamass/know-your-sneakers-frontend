@@ -34,7 +34,7 @@
           v-for="sneaker in paginatedSneakers"
           :key="sneaker.id"
           class="sneaker-preview"
-          @click="selectSneaker(sneaker.goTo)"
+          @click="selectSneaker(sneaker.name, sneaker.id)"
         >
           <div class="image-container">
             <img :src="getImgUrl(sneaker.brand, sneaker.imageUrl)" />
@@ -55,6 +55,7 @@
 import { useSneakersStore } from "@/stores/mainStore";
 import router, { Routes } from "@/router";
 import { onMounted, ref } from "vue";
+import _ from "lodash";
 
 export default {
   name: "SneakersHistory",
@@ -70,7 +71,6 @@ export default {
 
     onMounted(() => {
       sneakersStore.fetchSneakersPreview().then(() => {
-        console.log(sneakers);
         sneakers.value = sneakersStore.sneakers.data;
       });
     });
@@ -128,10 +128,13 @@ export default {
         behavior: "smooth",
       });
     },
-    selectSneaker(sneakerName) {
+    selectSneaker(sneakerName, sneakerId) {
+      // TODO: later change this to a value in backend
+      const formattedName = _.kebabCase(sneakerName);
+
       router.push({
         name: Routes.SINGLE_SNEAKER_HISTORY,
-        params: { sneakerName },
+        params: { sneakerName: formattedName, sneakerId: sneakerId },
       });
     },
   },
