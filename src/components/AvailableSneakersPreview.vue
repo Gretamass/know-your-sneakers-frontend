@@ -140,10 +140,11 @@ export default {
       .sneaker-info {
         display: flex;
         flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
         .image-container {
           height: auto;
-          //width: auto;
-          width: 60%;
+          width: 50%;
           img {
             width: 100%;
             height: 100%;

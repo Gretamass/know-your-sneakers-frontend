@@ -8,18 +8,26 @@
         <div class="logo-container"><img src="../assets/logo.png" /></div>
         <div class="menu-item">
           <h2>Informacija</h2>
-          <h3>Apie mus</h3>
-          <h3>Sportbačių istorijos</h3>
+          <router-link :to="`/${Routes.ABOUT_US}`"
+            ><h3>Apie mus</h3></router-link
+          >
+          <router-link :to="`/${Routes.SNEAKERS_HISTORY}`"
+            ><h3>Sportbačių istorijos</h3></router-link
+          >
         </div>
         <div class="menu-item">
           <h2>Naudingos nuorodos</h2>
-          <h3>Terminai ir sąlygos</h3>
-          <h3>Privatumo politika</h3>
+          <router-link :to="`/`"><h3>Terminai ir sąlygos</h3></router-link>
+          <router-link :to="`/`"><h3>Privatumo politika</h3></router-link>
         </div>
         <div class="menu-item">
           <h2>Mūsų paslaugos</h2>
-          <h3>Sportbačiai prekyboje</h3>
-          <h3>Naujienlaiškiai</h3>
+          <router-link :to="`/${Routes.SNEAKERS_IN_STOCK}`"
+            ><h3>Sportbačiai prekyboje</h3></router-link
+          >
+          <router-link :to="`/${Routes.ARTICLES}`"
+            ><h3>Tinklaraštis</h3></router-link
+          >
         </div>
         <div class="menu-item">
           <h2>Susisiekite su mumis</h2>
@@ -44,8 +52,14 @@
 </template>
 
 <script>
+import { Routes } from "@/router";
 export default {
   name: "Footer-Item",
+  computed: {
+    Routes() {
+      return Routes;
+    },
+  },
 };
 </script>
 
@@ -75,6 +89,12 @@ export default {
   width: 100%;
   position: relative;
   margin-bottom: 50px;
+  a {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+    color: #000;
+  }
 
   .upper-half.illustration {
     height: 200px;
