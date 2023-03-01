@@ -20,7 +20,7 @@
         <h2>{{ sneaker.name }}</h2>
         <div class="sneaker-info">
           <div class="image-container">
-            <img :src="getImgUrl(sneaker.imageUrl)" />
+            <img :src="getImgUrl(sneaker.brand, sneaker.imageUrl)" />
           </div>
           <div class="shop-container">
             <div
@@ -80,8 +80,8 @@ export default {
     };
   },
   methods: {
-    getImgUrl(pic) {
-      return "../src/assets/sneakers/" + pic;
+    getImgUrl(brand, picUrl) {
+      return "../src/assets/sneakers/" + brand + "/" + picUrl;
     },
     getShopImgUrl(providerId) {
       switch (providerId) {

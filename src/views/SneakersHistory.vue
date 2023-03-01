@@ -37,7 +37,7 @@
           @click="selectSneaker(sneaker.goTo)"
         >
           <div class="image-container">
-            <img :src="getImgUrl(sneaker.imageUrl)" />
+            <img :src="getImgUrl(sneaker.brand, sneaker.imageUrl)" />
           </div>
           <h2>{{ sneaker.model }}</h2>
           <h3>{{ sneaker.brand }}</h3>
@@ -96,8 +96,8 @@ export default {
     },
   },
   methods: {
-    getImgUrl(pic) {
-      return "../src/assets/sneakers/" + pic;
+    getImgUrl(brand, picUrl) {
+      return "../src/assets/sneakers/" + brand + "/" + picUrl;
     },
     previousPage() {
       if (this.currentPage > 1) {
@@ -182,9 +182,8 @@ export default {
       align-items: center;
       width: 33%;
       .image-container {
-        // TODO: make this fixed value to not move other images on hover
-        width: 450px;
-        height: 250px;
+        height: 350px;
+        width: max-content;
         img {
           transition: 0.3s;
           width: 90%;
